@@ -7,6 +7,17 @@ Create Post
 @section('content')
 <form method="POST" action="{{route('posts.store')}}" class="col-md-6 mx-auto my-5">
     @csrf
+    <!-- <h1>Create Post</h1> -->
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="mb-3">
         <label class="form-label">Title</label>
         <input name="title" type="text" class="form-control">

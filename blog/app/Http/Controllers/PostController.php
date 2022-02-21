@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Pagination;
 
@@ -37,7 +38,7 @@ class PostController extends Controller
         return view('posts.create', ['users' => $users]);
     }
 
-    public function store()
+    public function store(PostRequest $request)
     {
         $requestData = request()->all();
         // dd($requestData);
@@ -52,6 +53,18 @@ class PostController extends Controller
         // ];
         // array_push($posts, $post);
         // session()->put('posts', $posts);
+
+        // request()->validate(
+        //     [
+        //         'title' => ['required', 'min:3'],
+        //         'description' => ['required', 'min:10'],
+        //     ],
+        //     [
+        //         'title.required' => "Title Can't Be Empty",
+        //         'description.required' => "Description Can't Be Empty",
+        //         'description.min' => "Description must Be <= 10 Characters"
+        //     ]
+        // );
 
         $newPost = Post::create(
             [
@@ -114,16 +127,19 @@ class PostController extends Controller
         // }
         // session()->put('posts', $posts);
         // return redirect()->route('posts.index');
-
-        $postToUpdate = Post::findOrFail($postID);
-        $postToUpdate->update(
-            [
-                'title' => $request->title,
-                'description' => $request->description,
-                'user_id' => $request->user_id,
-                'created_at' => now()
-            ]
-        );
+        // request()->validate([
+        //     'title' => ['required', 'min:3'],
+        //     'description' => ['required', 'min:10'],
+        // ]);
+        // $postToUpdate = Post::findOrFail($postID);
+        // $postToUpdate->update(
+        //     [
+        //         'title' => $request->title,
+        //         'description' => $request->description,
+        //         'user_id' => $request->user_id,
+        //         'created_at' => now()
+        //     ]
+        // );
 
         return redirect()->route('posts.index');
     }

@@ -23,7 +23,7 @@
       <a class="nav-link text-light " href="{{route('posts.index')}}">All Posts</a>
     </li>
   </ul>
-
+    
   @yield('content')
 
 </body>
