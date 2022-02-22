@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+// use App\Http\Controllers\Auth\;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,11 @@ use App\Http\Controllers\PostController;
 |
 */
 
+Route::get('/', function () {
+    return view('home');
+});
 
-Route::get('/', [PostController::class, 'index'])->name('posts.index');
+// Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
@@ -29,3 +33,7 @@ Route::PUT('/posts/{post}', [PostController::class, 'update'])->name('posts.upda
 Route::DELETE('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
