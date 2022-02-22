@@ -131,15 +131,15 @@ class PostController extends Controller
         //     'title' => ['required', 'min:3'],
         //     'description' => ['required', 'min:10'],
         // ]);
-        // $postToUpdate = Post::findOrFail($postID);
-        // $postToUpdate->update(
-        //     [
-        //         'title' => $request->title,
-        //         'description' => $request->description,
-        //         'user_id' => $request->user_id,
-        //         'created_at' => now()
-        //     ]
-        // );
+        $postToUpdate = Post::findOrFail($postID);
+        $postToUpdate->update(
+            [
+                'title' => $request->title,
+                'description' => $request->description,
+                'user_id' => $request->user_id,
+                'created_at' => now()
+            ]
+        );
 
         return redirect()->route('posts.index');
     }
@@ -148,5 +148,9 @@ class PostController extends Controller
     {
         Post::find($postID)->delete();
         return redirect()->route('posts.index');
+    }
+
+    public function welcome(){
+        return view('posts.welcome');
     }
 }
