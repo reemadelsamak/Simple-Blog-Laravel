@@ -11,6 +11,7 @@ Posts
             <tr>
                 <th scope="col"></th>
                 <th scope="col">Title</th>
+                <th scope="col">Slug</th>
                 <th scope="col" class="col-md-3">Description</th>
                 <th scope="col">Posted By</th>
                 <th scope="col">Created At</th>
@@ -20,12 +21,10 @@ Posts
         <tbody>
             @foreach ($posts as $post)
             <tr>
-                <th scope="row">{{$post['id']}}</th>
+                <th>{{$post['id']}}</th>
                 <td>{{$post['title']}}</td>
+                <td>{{$post['slug']}}</td>
                 <td class="col-md-3">{{$post['description']}}</td>
-                <!-- <td>{{$post['userID']}}</td> -->
-                <!-- @dump($post) -->
-
                 <td>{{$post->user ? $post->user->name : 'User Not Found !' }}</td>
                 <td>{{$post['created_at']}}</td>
                 <td>
@@ -38,7 +37,6 @@ Posts
                             Delete
                         </button>
                     </form>
-
                 </td>
             </tr>
             @endforeach

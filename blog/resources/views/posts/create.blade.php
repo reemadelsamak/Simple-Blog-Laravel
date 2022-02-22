@@ -22,6 +22,10 @@ Create Post
         <label class="form-label">Title</label>
         <input name="title" type="text" class="form-control">
     </div>
+    <!-- <div class="mb-3">
+        <label class="form-label">Slug</label>
+        <input name="title" type="text" class="form-control">
+    </div> -->
     <div class="mb-3">
         <label class="form-label">Description</label>
         <textarea name="description" class="form-control"></textarea>

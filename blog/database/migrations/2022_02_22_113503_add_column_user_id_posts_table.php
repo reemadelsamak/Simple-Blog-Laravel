@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        //z
         Schema::table('posts', function (Blueprint $table) {
             $table->foreignId('user_id')->nullable()->constrained();
         });

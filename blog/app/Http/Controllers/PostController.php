@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Pagination;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 use function GuzzleHttp\Promise\all;
 use App\Models\Post;
@@ -26,7 +27,7 @@ class PostController extends Controller
         //     session()->put('posts', $this->posts);
         // }
         // return view('posts.index', ['posts' => session()->get('posts')]);
-        $postsFromDB = Post::paginate(5);
+        $postsFromDB = Post::paginate(3);
         // $postsFromDB = Post::all();
         return view('posts.index', ['posts' => $postsFromDB]);
     }
@@ -69,6 +70,7 @@ class PostController extends Controller
         $newPost = Post::create(
             [
                 'title' => $requestData['title'],
+                'slug'=>SlugService::createSlug(Post::class,'slug',$requestData['title']),
                 'description' => $requestData['description'],
                 'user_id' => $requestData['user_id'],
                 'created_at' => now()
@@ -153,4 +155,6 @@ class PostController extends Controller
     public function welcome(){
         return view('posts.welcome');
     }
+
+
 }
