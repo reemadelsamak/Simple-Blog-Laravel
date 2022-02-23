@@ -22,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return 'we are in test';
 // });
 
-Route::get('posts', [PostController::class, 'index']);
-Route::get('posts/{post}', [PostController::class, 'show']);
-Route::POST('posts/store', [PostController::class, 'store']);
+Route::GET('posts', [PostController::class, 'index']);
+Route::GET('posts/{post}', [PostController::class, 'show']);
+Route::POST('posts', [PostController::class, 'store']);
