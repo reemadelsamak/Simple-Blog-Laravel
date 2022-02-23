@@ -35,7 +35,7 @@ Create Post
 
         <select name="user_id" class="form-control">
 
-            <option class="text-center"> -- select creator -- </option>
+            <option class="text-center" value=""> -- select creator -- </option>
 
             @foreach ($users as $user)
             <option value="{{ $user->id }}">{{ $user->name }}</option>

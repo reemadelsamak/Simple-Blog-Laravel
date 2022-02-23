@@ -27,8 +27,9 @@ class PostController extends Controller
         //     session()->put('posts', $this->posts);
         // }
         // return view('posts.index', ['posts' => session()->get('posts')]);
-        $postsFromDB = Post::paginate(3);
-        // $postsFromDB = Post::all();
+        // $postsFromDB = Post::paginate(3);
+        
+        $postsFromDB = Post::with('user')->where('user_id', '!=', null)->paginate(3);
         return view('posts.index', ['posts' => $postsFromDB]);
     }
 
@@ -70,7 +71,7 @@ class PostController extends Controller
         $newPost = Post::create(
             [
                 'title' => $requestData['title'],
-                'slug'=>SlugService::createSlug(Post::class,'slug',$requestData['title']),
+                'slug' => SlugService::createSlug(Post::class, 'slug', $requestData['title']),
                 'description' => $requestData['description'],
                 'user_id' => $requestData['user_id'],
                 'created_at' => now()
@@ -152,9 +153,8 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function welcome(){
+    public function welcome()
+    {
         return view('posts.welcome');
     }
-
-
 }
