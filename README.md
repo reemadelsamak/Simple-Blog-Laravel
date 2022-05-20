@@ -1,4 +1,4 @@
-# Simple-Blog-Laravel
+# Simple Blog App using Laravel
 Simple App to apply CRUD operations and ability to login via Gmail / Github
 
 ## Project setup
