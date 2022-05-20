@@ -2,7 +2,7 @@
 Simple App to apply CRUD operations and ability to login via Gmail / Github
 
 ## Project setup
-- Create new mysql database called "gym" and run :
+- Create new mysql database called "laravel" and run :
 ```
 npm install
 ```
